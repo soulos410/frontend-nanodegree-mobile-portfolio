@@ -497,10 +497,11 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-function updatePositions(items) {
+function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+  var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
     // document.body.scrollTop is no longer supported in Chrome.
     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -536,6 +537,6 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     movingContainer.appendChild(elem);
   }
-  var items = document.querySelectorAll('.mover');
-  updatePositions(items);
+  //var items = document.querySelectorAll('.mover');
+  updatePositions();
 });
